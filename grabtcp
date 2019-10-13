@@ -1,0 +1,61 @@
+#!/bin/bash
+HOST=$1
+PORT=$2
+VERBOSITY=$3
+REPEAT=$4
+
+
+function show_help() {
+	echo "  ________            ___.    __                 "
+	echo " /  _____/___________ \_ |___/  |_  ____ ______  "
+	echo "/   \  __\_  __ \__  \ | __ \   __\/ ___\\____ \ "
+	echo "\    \_\  \  | \// __ \| \_\ \  | \  \___|  |_> >"
+	echo " \______  /__|  (____  /___  /__|  \___  >   __/ "
+	echo "        \/           \/    \/          \/|__|    "
+	echo "			Grabtcp!"
+	echo "		  A tcp banner grabber."
+	echo ""
+	echo ""
+	echo ""
+	echo "Usage:"
+	echo "bannergrabber [HOST] [PORT] [VERBOSITY] [REPEAT]"
+	echo "-h, --help	show this help menu"
+	echo ""
+	echo "Required: HOST & PORT"
+	echo "Optional: REPEAT & VERBOSITY"
+	echo ""
+	echo "EX: bannergrabber 192.168.1.1 8080 -vvv 3"
+	echo ""
+}
+
+
+function grab_banner() {
+	echo "" | nc $VERBOSITY $HOST $PORT
+}
+
+
+if [[ $HOST == '-h' ]] || [[  $HOST == '--help' ]]; then
+	show_help
+	exit
+fi
+
+
+if [[ -n $HOST ]] && [[ -n $PORT ]]; then
+	if [[ -z $REPEAT ]]; then
+		grab_banner
+		exit
+
+	elif [[	-n $REPEAT ]]; then
+		for i in {1..$REPEAT}; do
+			grab_banner
+			sleep 0.5
+		done
+		exit
+	fi
+
+else
+	show_help
+	echo ""
+	echo "ERROR: MUST PROVIDE A HOST AND PORT"
+	exit
+fi
