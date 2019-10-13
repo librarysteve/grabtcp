@@ -16,13 +16,13 @@ bash
 	\    \_\  \  | \// __ \| \_\ \  | \  \___|  |_> >
 	 \______  /__|  (____  /___  /__|  \___  >   __/ 
 	        \/           \/    \/          \/|__|    
-				          Grabtcp!
-			       A tcp banner grabber.
-	Usage:
-	bannergrabber [HOST] [PORT] [VERBOSITY] [REPEAT]
-	-h, --help	show this help menu
+		     Grabtcp!
+		A tcp banner grabber.
+Usage:
+bannergrabber [HOST] [PORT] [VERBOSITY] [REPEAT]
+-h, --help	show this help menu
 
-	Required: HOST & PORT
-	Optional: REPEAT & VERBOSITY
-  EX: bannergrabber 192.168.1.1 8080 -vvv 3
+Required: HOST & PORT
+Optional: REPEAT & VERBOSITY
+EX: bannergrabber 192.168.1.1 8080 -vvv 3
 ```
